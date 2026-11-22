@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kolkata 2020 NO₂ and women aged 15–49</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;color:#17324a;background:#f3f7fa;margin:0}
+main{max-width:1020px;margin:auto;padding:24px}h1,h2{line-height:1.2}
+section{background:white;padding:20px;margin:20px 0;border-radius:12px;box-shadow:0 2px 12px #abc3d233}
+iframe{width:100%;height:510px;border:1px solid #c7d4de;border-radius:8px}
+img{max-width:100%;height:auto;border-radius:8px}table{width:100%;border-collapse:collapse}
+th,td{padding:9px;border-bottom:1px solid #d9e4eb;text-align:left}th{width:58%}
+a{color:#075b8a}small{color:#405467}</style></head><body><main>
+<h1>Kolkata: satellite NO₂ and residential population, 2020</h1>
+<p>Question: What proportion of women aged 15–49 live in areas with relatively high satellite-observed tropospheric NO₂?</p>
+<section><h2>Method</h2><p>FAO GAUL 2015 Kolkata district; 2020 Sentinel-5P OFFL NO₂ observations
+masked where cloud fraction exceeds 0.30; annual and monthly pixel means. High means at or above
+the city's annual 75th percentile (0.00008690 mol/m²). WorldPop 2020 female age bins 15–49
+are summed by cell. The coarse NO₂ class is transferred to WorldPop grid cell centres using
+nearest-neighbour assignment.</p></section>
+<section><h2>Annual tropospheric NO₂</h2><iframe title="Annual NO2 map" src="kolkata_annual_no2_2020.html"></iframe>
+<p><a href="kolkata_annual_no2_2020.html">Open full interactive annual map</a></p></section>
+<section><h2>Women in relatively high NO₂ areas</h2><iframe title="Women in high NO2 map" src="kolkata_women_high_no2_2020.html"></iframe>
+<p><a href="kolkata_women_high_no2_2020.html">Open full interactive exposure map</a></p></section>
+<section><h2>Numerical results</h2><table><tr><th>Study area</th><td>FAO GAUL 2015 ADM2 Kolkata district</td></tr>
+<tr><th>Year</th><td>2020</td></tr>
+<tr><th>Annual city mean NO₂ (mol/m²)</th><td>0.00008349</td></tr>
+<tr><th>High NO₂ threshold, pixel 75th percentile (mol/m²)</th><td>0.00008690</td></tr>
+<tr><th>Women aged 15–49, district (WorldPop estimate)</th><td>821208</td></tr>
+<tr><th>Women aged 15–49 in high NO₂ cells (estimate)</th><td>177843</td></tr>
+<tr><th>Exposure share of all district women aged 15–49 (%)</th><td>21.66</td></tr>
+<tr><th>Women with valid annual NO₂ data (%)</th><td>100.00</td></tr></table></section>
+<section><h2>Monthly NO₂ animation</h2><img src="kolkata_monthly_no2_2020.gif" alt="Animated monthly NO2 map of Kolkata, January to December 2020">
+<p>Same map scale in every frame: 0–0.0002 mol/m². Upper values saturate on display.</p>
+<p><a href="kolkata_monthly_no2_2020.gif">Open or download the animated GIF</a></p></section>
+<section><h2>Interpretation and limitations</h2><p>About 177,843 of 821,208 estimated women
+aged 15–49 (21.66%) resided in relatively high NO₂ areas. The highest monthly district
+mean was in January and the lowest in July. These results describe residence
+and satellite NO₂ columns; they do not measure individual or ground-level exposure.
+Sentinel-5P (~1.1 km) is much coarser than WorldPop (~100 m), and cloud filtering,
+missing observations and the GAUL district rather than municipal boundary affect interpretation.
+The high threshold is local and statistical, not a health standard.</p></section>
+<section><h2>Sources</h2><ul>
+<li><a href="https://developers.google.com/earth-engine/datasets/catalog/FAO_GAUL_2015_level2">FAO GAUL 2015 level 2 district boundary</a></li>
+<li><a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_NO2">Copernicus Sentinel-5P OFFL NO₂</a></li>
+<li><a href="https://developers.google.com/earth-engine/datasets/catalog/WorldPop_GP_100m_pop_age_sex">WorldPop 2020 estimated age and sex structure</a></li>
+</ul><small>Analysis: 2020; generated from the accompanying notebook.</small></section>
+</main></body></html>

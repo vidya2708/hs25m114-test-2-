@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4ae17b0682bfd04e31fb26641f1c715a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+position:fixed;
+bottom:25px;
+right:25px;
+left:auto;
+z-index:9999;
+background:white;
+padding:14px;
+border:1px solid #777;
+border-radius:7px;
+font:13px Arial;
+width:285px;
+">
+
+<b>Kolkata Annual Mean Tropospheric NO2</b>
+<br>
+<b>Year: 2020</b>
+<br>
+Unit: mol/m²
+
+<div style="
+background:linear-gradient(
+90deg,
+#253494,
+#2c7fb8,
+#41b6c4,
+#a1dab4,
+#ffffb2,
+#fe9929,
+#cc4c02,
+#800026
+);
+height:17px;
+margin:9px 0;
+border:1px solid #ddd;
+"></div>
+
+<div style="display:flex;justify-content:space-between;">
+<span>0.0000725</span>
+<span>0.0000904</span>
+</div>
+
+<br>
+<span style="color:#253494;">●</span> Lower NO2
+<br>
+<span style="color:#800026;">●</span> Higher NO2
+
+</div>
+    
+            <div class="folium-map" id="map_4ae17b0682bfd04e31fb26641f1c715a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4ae17b0682bfd04e31fb26641f1c715a = L.map(
+                "map_4ae17b0682bfd04e31fb26641f1c715a",
+                {
+                    center: [22.562340143109516, 88.33898121204562],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_4ae17b0682bfd04e31fb26641f1c715a);
+
+            
+
+        
+    
+            var tile_layer_a181b1dcf91b9ca580255c6e86103b93 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a181b1dcf91b9ca580255c6e86103b93.addTo(map_4ae17b0682bfd04e31fb26641f1c715a);
+        
+    
+            var tile_layer_f4f7987c0733092ef7075b0f9e4788f2 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/urban-sem-iii/maps/02cc0e904c366d1e50b4995c6d0662c1-4b4b795fdc3e3bede38e540ad7675a48/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 0.85,
+}
+
+            );
+        
+    
+            tile_layer_f4f7987c0733092ef7075b0f9e4788f2.addTo(map_4ae17b0682bfd04e31fb26641f1c715a);
+        
+    
+        function geo_json_c574715bc856c1658d194e14845571f4_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#111111", "fillOpacity": 0, "weight": 2.5};
+            }
+        }
+
+        function geo_json_c574715bc856c1658d194e14845571f4_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_c574715bc856c1658d194e14845571f4 = L.geoJson(null, {
+                onEachFeature: geo_json_c574715bc856c1658d194e14845571f4_onEachFeature,
+            
+                style: geo_json_c574715bc856c1658d194e14845571f4_styler,
+            ...{
+}
+        });
+
+        function geo_json_c574715bc856c1658d194e14845571f4_add (data) {
+            geo_json_c574715bc856c1658d194e14845571f4
+                .addData(data);
+        }
+            geo_json_c574715bc856c1658d194e14845571f4_add({"columns": {"ADM0_CODE": "Integer", "ADM0_NAME": "String", "ADM1_CODE": "Integer", "ADM1_NAME": "String", "ADM2_CODE": "Integer", "ADM2_NAME": "String", "DISP_AREA": "String", "EXP2_YEAR": "Integer", "STATUS": "String", "STR2_YEAR": "Integer", "Shape_Area": "Float", "Shape_Leng": "Float", "system:index": "String"}, "features": [{"geometry": {"coordinates": [[[88.27065217434514, 22.551760916504556], [88.27192746903259, 22.545990847599782], [88.27465645927374, 22.543623033732516], [88.28159481323897, 22.543141423741634], [88.28643736356717, 22.532617975250215], [88.28793116906347, 22.525157898724263], [88.28807831328844, 22.514059180674742], [88.29389296818472, 22.51119195153329], [88.29747811236606, 22.510790658938372], [88.31215746808395, 22.505939200850314], [88.32058073865743, 22.504739671800397], [88.32433976376223, 22.50546200990261], [88.32837075747618, 22.503682899712956], [88.33616530594675, 22.497801342962944], [88.34670210946112, 22.494951963879114], [88.35246326850374, 22.495531595398234], [88.35894685020277, 22.494938604113916], [88.36444046044383, 22.49521953045046], [88.36770447250579, 22.500512448913824], [88.36965756217121, 22.507513242962055], [88.36963526915439, 22.51531216934738], [88.37156605357777, 22.522897144229024], [88.37599394135945, 22.521349784101393], [88.37975296845686, 22.52354815061242], [88.3870792574158, 22.533870939629566], [88.38725316124042, 22.538958815954288], [88.39169446732718, 22.54053284867056], [88.39852135991102, 22.549049722348208], [88.39803530958923, 22.553798717758813], [88.39901184552085, 22.554842080206424], [88.405700529256, 22.553932473500375], [88.4073102497461, 22.556469657482108], [88.40376076317679, 22.56231113712864], [88.40216889387304, 22.56970874307236], [88.39433872017928, 22.583340233128432], [88.39189959111235, 22.590791417863024], [88.39305895520636, 22.597738715037448], [88.3921135968798, 22.61842886393595], [88.3906153861545, 22.624742971462144], [88.3886265992571, 22.62634828061921], [88.38059130741492, 22.627766241759293], [88.35967810266209, 22.62974168210512], [88.36414165255093, 22.620658471881505], [88.36551508514145, 22.612351126479847], [88.36450282910884, 22.604940091608846], [88.35978514850954, 22.606019219562732], [88.35233397668432, 22.596739817840074], [88.34810677343455, 22.588931970367742], [88.34345140763668, 22.573521304700044], [88.32888798633573, 22.552139910509826], [88.32071894878703, 22.546851410196766], [88.30817992594959, 22.544612956215772], [88.28360135902888, 22.54805090734231], [88.27065217434514, 22.551760916504556]]], "type": "Polygon"}, "id": "00010000000000001778", "properties": {"ADM0_CODE": 115, "ADM0_NAME": "India", "ADM1_CODE": 1511, "ADM1_NAME": "West Bengal", "ADM2_CODE": 70292, "ADM2_NAME": "Kolkata", "DISP_AREA": "NO", "EXP2_YEAR": 3000, "STATUS": "Member State", "STR2_YEAR": 1000, "Shape_Area": 0.00804325527752, "Shape_Leng": 0.473324785679}, "type": "Feature"}], "id": "FAO/GAUL/2015/level2", "properties": {"system:asset_size": 316969462}, "type": "FeatureCollection", "version": 1701682634012831});
+
+        
+    
+            geo_json_c574715bc856c1658d194e14845571f4.bindTooltip(
+                `<div>
+                     Kolkata Municipal Boundary
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_c574715bc856c1658d194e14845571f4.addTo(map_4ae17b0682bfd04e31fb26641f1c715a);
+        
+    
+            var layer_control_81e2caca93f132316c4bab34cf0808bb_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_a181b1dcf91b9ca580255c6e86103b93,
+                },
+                overlays :  {
+                    "2020 Annual Mean NO2" : tile_layer_f4f7987c0733092ef7075b0f9e4788f2,
+                    "Kolkata Municipal Boundary" : geo_json_c574715bc856c1658d194e14845571f4,
+                },
+            };
+            let layer_control_81e2caca93f132316c4bab34cf0808bb = L.control.layers(
+                layer_control_81e2caca93f132316c4bab34cf0808bb_layers.base_layers,
+                layer_control_81e2caca93f132316c4bab34cf0808bb_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_4ae17b0682bfd04e31fb26641f1c715a);
+
+        
+    
+            map_4ae17b0682bfd04e31fb26641f1c715a.fitBounds(
+                [[22.494938604113916, 88.27065217434514], [22.62974168210512, 88.4073102497461]],
+                {"padding": [30, 30]}
+            );
+        
+</script>
+</html>
